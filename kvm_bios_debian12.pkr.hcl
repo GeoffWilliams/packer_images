@@ -1,3 +1,4 @@
+# not using this any more, its just an example. BIOS/UEFI have completely different boot menus
 packer {
   required_plugins {
     qemu = {

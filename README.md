@@ -61,14 +61,14 @@ Note: UEFI mode
 ### Packer build
 
 ```shell
-PACKER_LOG=1 packer build kvm_uefi_debian_12.pkr.hcl
+PACKER_LOG=1 packer build kvm_uefi_debian_12.9.pkr.hcl
 PACKER_LOG=1 packer build kvm_uefi_debian_trixie.pkr.hcl
 PACKER_LOG=1 packer build kvm_uefi_alma_9.5.pkr.hcl
 ```
 
 ### Nexus upload
 ```shell
-./scripts/upload.sh kvm_uefi_debian_12 0
+./scripts/upload.sh kvm_uefi_debian_12.9 0
 ./scripts/upload.sh kvm_uefi_debian_trixie 0
 ./scripts/upload.sh kvm_uefi_alma_9.5 0
 ```

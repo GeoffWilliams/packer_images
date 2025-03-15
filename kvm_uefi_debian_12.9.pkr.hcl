@@ -10,7 +10,7 @@ packer {
 
 variable "vm_name" {
   type    = string
-  default = "kvm_uefi_debian_12"
+  default = "kvm_uefi_debian_12.9"
 }
 
 source "qemu" "debian" {
