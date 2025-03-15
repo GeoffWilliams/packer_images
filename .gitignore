@@ -1,0 +1,5 @@
+builds
+serial.log
+http/authorized_keys
+**/temp_image
+**/packer_cache

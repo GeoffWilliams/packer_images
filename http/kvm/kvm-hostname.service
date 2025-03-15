@@ -1,0 +1,9 @@
+[Unit]
+Description=KVM hostname
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/kvm-hostname.sh
+
+[Install]
+WantedBy=multi-user.target

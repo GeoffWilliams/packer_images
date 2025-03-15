@@ -1,0 +1,12 @@
+[Unit]
+Description=Hyper-v hostname
+# debian hyperv services are in /etc/init.d so cannot depend...
+# After=hypervkvpd.service
+# Wants=hypervkvpd.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/hyperv-hostname.sh
+
+[Install]
+WantedBy=multi-user.target
