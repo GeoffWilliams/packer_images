@@ -75,12 +75,28 @@ PACKER_LOG=1 packer build kvm_uefi_alma_9.5.pkr.hcl
 
 ## Troubleshooting
 
-### Test image in qemu
+### Test image in qemu - AMD64
 * Work on a copy to preserve the original file
 * `--cpu max` required for RHEL 9
 ```shell
 qemu-system-x86_64 -bios  /usr/share/OVMF/OVMF_CODE.fd -chardev stdio,id=char0,logfile=serial.log,signal=off -serial chardev:char0 -m 2048 --cpu max temp_image
 ```
+
+### Test image in qemu - ARM64
+* Work on a copy `test.img` to preserve the original file
+```shell
+qemu-system-aarch64 \
+    -bios /usr/share/qemu-efi-aarch64/QEMU_EFI.fd \
+    -m 2048 \
+    --cpu host \
+    -machine virt \
+    -serial mon:stdio \
+    -display none \
+    -enable-kvm \
+    test.img
+```
+* Exit serial terminal with `ctrl+a` then `c`, then exit qemu console with `quit`
+
 
 ### Create a VM with virt-install
 
