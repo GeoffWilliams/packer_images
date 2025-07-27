@@ -28,11 +28,26 @@ source "qemu" "debian" {
     ["-boot", "strict=off"],
 
     # bios from `sudo apt install qemu-efi-aarch64`
-    ["-bios", "/usr/share/qemu-efi-aarch64/QEMU_EFI.fd"],
+    ["-bios", "/usr/share/AAVMF/AAVMF_CODE.fd"],
 
     ["-device", "virtio-gpu-pci"],  # Add GPU device
     ["-device", "qemu-xhci"],
     ["-device", "usb-kbd"],
+
+
+    # for ethernet device numbering
+    ["-device", <<-EOT
+    {"driver":"pcie-root-port","port":8,"chassis":1,"id":"pci.1","bus":"pcie.0","multifunction":true,"addr":"0x7"}
+    EOT
+    ],
+    ["-netdev", <<-EOT
+    {"type":"user","id":"hostnet0"} 
+    EOT
+    ],
+    ["-device", <<-EOT
+    {"driver":"virtio-net-pci","netdev":"hostnet0","id":"net0","mac":"de:ad:be:ef:ca:fe","bus":"pci.1","addr":"0x0"}
+    EOT
+    ]
   ]
   communicator          = "none"
   cpus                  = "2"
